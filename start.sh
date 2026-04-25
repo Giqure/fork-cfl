@@ -197,7 +197,7 @@ fi
 
 # Configure Clash Dashboard
 Work_Dir=$(cd $(dirname $0); pwd)
-Dashboard_Dir="${Work_Dir}/dashboard/public"
+Dashboard_Dir="${Work_Dir}/conf/dashboard/public"
 if [ "$EXTERNAL_CONTROLLER_ENABLED" = "true" ]; then
 	sed -ri "s@^# external-ui:.*@external-ui: ${Dashboard_Dir}@g" $Conf_Dir/config.yaml
 fi
