@@ -209,7 +209,9 @@ echo -e '\n正在启动Clash服务...'
 Text5="服务启动成功！"
 Text6="服务启动失败！"
 if [[ $CpuArch =~ "x86_64" || $CpuArch =~ "amd64"  ]]; then
-	nohup $Server_Dir/bin/clash-linux-amd64 -d $Conf_Dir &> $Log_Dir/clash.log &
+	$Server_Dir/bin/clash-linux-amd64-v3 -v &>/dev/null && Clash_Bin="clash-linux-amd64-v3" || Clash_Bin="clash-linux-amd64"
+	
+	nohup $Server_Dir/bin/$Clash_Bin -d $Conf_Dir &> $Log_Dir/clash.log &
 	ReturnStatus=$?
 	if_success $Text5 $Text6 $ReturnStatus
 elif [[ $CpuArch =~ "aarch64" ||  $CpuArch =~ "arm64" ]]; then
